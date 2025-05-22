@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>VISIT TRACKER</title>
+    <h1>WELCOME TO THE HOME PAGE!</h1>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+  </head>
+
+  <body>
+    <header style="background: #f0f0f0; padding: 10px; margin-bottom: 20px;">
+      <p><%=time_based_greeting%></p>
+      <p>Total visits: <%= total_visit_count%></p>
+      <p>Visits to this page: <%= page_visit_count%></p>
+    </header>
+    
+    <%= yield %>
+    <% if @last_visit.present? %>
+
+      <p>Last Visited: <%= time_ago_in_words(@last_visit) %> ago
+      </p>
+    <% end %>
+  </body>
+</html>
